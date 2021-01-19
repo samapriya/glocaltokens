@@ -24,7 +24,7 @@ setup_args = dict(
 
 install_requires = [
     'gpsoauth',
-    'grpcio',
+    'grpcio==1.20',
     'grpcio-tools',
     'jq',
     'simplejson',
