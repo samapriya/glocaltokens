@@ -1,8 +1,7 @@
 from unittest import TestCase
 
 from faker import Faker
-from faker.providers import internet as internet_provider
-from faker.providers import python as python_provider
+from faker.providers import internet as internet_provider, python as python_provider
 from mock import patch
 
 from glocaltokens.scanner import GoogleDevice
@@ -32,6 +31,10 @@ class GoogleDeviceTests(TestCase):
         self.assertEqual(ip, device.ip)
         self.assertEqual(port, device.port)
         self.assertEqual(model, device.model)
+
+        self.assertEqual(
+            f"{{name:{name},ip:{ip},port:{port},model:{model}}}", str(device)
+        )
 
     @patch("glocaltokens.scanner._LOGGER.error")
     def test_initialization__valid(self, mock):
